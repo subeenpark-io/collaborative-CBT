@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC0A2048276EFCB8005F06B2 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A2047276EFCB8005F06B2 /* PostService.swift */; };
+		CC0A204A276EFD01005F06B2 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A2049276EFD01005F06B2 /* BaseAPI.swift */; };
+		CC0A204C276EFE22005F06B2 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A204B276EFE22005F06B2 /* PostData.swift */; };
+		CC0A204E276F089F005F06B2 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A204D276F089F005F06B2 /* MultilineTextField.swift */; };
 		CC2C4C27275BD49F006CE4DC /* collaborativeCBTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2C4C26275BD49F006CE4DC /* collaborativeCBTApp.swift */; };
 		CC2C4C29275BD49F006CE4DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2C4C28275BD49F006CE4DC /* ContentView.swift */; };
 		CC2C4C2B275BD4A1006CE4DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2C4C2A275BD4A1006CE4DC /* Assets.xcassets */; };
@@ -23,9 +27,20 @@
 		CC2C4C53275BE7EE006CE4DC /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2C4C52275BE7EE006CE4DC /* UIApplication+Extension.swift */; };
 		CC2C4C55275BE88E006CE4DC /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2C4C54275BE88E006CE4DC /* Background.swift */; };
 		CC2C4C58275C0BD0006CE4DC /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2C4C57275C0BD0006CE4DC /* PostViewModel.swift */; };
+		CCF30332276EFB2B00F36A50 /* RequestLogginPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF30327276EFB2B00F36A50 /* RequestLogginPlugin.swift */; };
+		CCF30333276EFB2B00F36A50 /* handleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF30328276EFB2B00F36A50 /* handleResponse.swift */; };
+		CCF30336276EFB2B00F36A50 /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF3032C276EFB2B00F36A50 /* PostAPI.swift */; };
+		FBC4DCB960538B0C3644B1EE /* Pods_collaborativeCBT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13464554931601AB4106D803 /* Pods_collaborativeCBT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13464554931601AB4106D803 /* Pods_collaborativeCBT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collaborativeCBT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		359C84E8DF3CA2248B768F46 /* Pods-collaborativeCBT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collaborativeCBT.debug.xcconfig"; path = "Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT.debug.xcconfig"; sourceTree = "<group>"; };
+		4B43E7347C34247320B13CB3 /* Pods-collaborativeCBT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collaborativeCBT.release.xcconfig"; path = "Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT.release.xcconfig"; sourceTree = "<group>"; };
+		CC0A2047276EFCB8005F06B2 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		CC0A2049276EFD01005F06B2 /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		CC0A204B276EFE22005F06B2 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
+		CC0A204D276F089F005F06B2 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		CC2C4C23275BD49F006CE4DC /* collaborativeCBT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = collaborativeCBT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2C4C26275BD49F006CE4DC /* collaborativeCBTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collaborativeCBTApp.swift; sourceTree = "<group>"; };
 		CC2C4C28275BD49F006CE4DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +58,9 @@
 		CC2C4C52275BE7EE006CE4DC /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		CC2C4C54275BE88E006CE4DC /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		CC2C4C57275C0BD0006CE4DC /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		CCF30327276EFB2B00F36A50 /* RequestLogginPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestLogginPlugin.swift; sourceTree = "<group>"; };
+		CCF30328276EFB2B00F36A50 /* handleResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = handleResponse.swift; sourceTree = "<group>"; };
+		CCF3032C276EFB2B00F36A50 /* PostAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,17 +68,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBC4DCB960538B0C3644B1EE /* Pods_collaborativeCBT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FD79E34607D1EBBD7A7B346 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13464554931601AB4106D803 /* Pods_collaborativeCBT.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CC2C4C1A275BD49F006CE4DC = {
 			isa = PBXGroup;
 			children = (
 				CC2C4C25275BD49F006CE4DC /* collaborativeCBT */,
 				CC2C4C24275BD49F006CE4DC /* Products */,
+				EAE01D8C41E49201A4E3242A /* Pods */,
+				5FD79E34607D1EBBD7A7B346 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +104,7 @@
 		CC2C4C25275BD49F006CE4DC /* collaborativeCBT */ = {
 			isa = PBXGroup;
 			children = (
+				CCF30325276EFACB00F36A50 /* APIServices */,
 				CC2C4C56275C0BC5006CE4DC /* ViewModel */,
 				CC2C4C3E275BD914006CE4DC /* Resources */,
 				CC2C4C43275BDBE5006CE4DC /* UIComponents */,
@@ -101,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				CC2C4C36275BD634006CE4DC /* Post.swift */,
+				CC0A204B276EFE22005F06B2 /* PostData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,6 +167,7 @@
 			children = (
 				CC2C4C44275BDBEE006CE4DC /* FlexibleView */,
 				CC2C4C54275BE88E006CE4DC /* Background.swift */,
+				CC0A204D276F089F005F06B2 /* MultilineTextField.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -167,6 +199,51 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		CCF30325276EFACB00F36A50 /* APIServices */ = {
+			isa = PBXGroup;
+			children = (
+				CCF30329276EFB2B00F36A50 /* APIs */,
+				CCF30326276EFB2B00F36A50 /* MoyaPlugins */,
+				CCF3032E276EFB2B00F36A50 /* Services */,
+			);
+			path = APIServices;
+			sourceTree = "<group>";
+		};
+		CCF30326276EFB2B00F36A50 /* MoyaPlugins */ = {
+			isa = PBXGroup;
+			children = (
+				CCF30327276EFB2B00F36A50 /* RequestLogginPlugin.swift */,
+				CCF30328276EFB2B00F36A50 /* handleResponse.swift */,
+			);
+			path = MoyaPlugins;
+			sourceTree = "<group>";
+		};
+		CCF30329276EFB2B00F36A50 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				CC0A2049276EFD01005F06B2 /* BaseAPI.swift */,
+				CCF3032C276EFB2B00F36A50 /* PostAPI.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		CCF3032E276EFB2B00F36A50 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CC0A2047276EFCB8005F06B2 /* PostService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EAE01D8C41E49201A4E3242A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				359C84E8DF3CA2248B768F46 /* Pods-collaborativeCBT.debug.xcconfig */,
+				4B43E7347C34247320B13CB3 /* Pods-collaborativeCBT.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -174,9 +251,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC2C4C31275BD4A1006CE4DC /* Build configuration list for PBXNativeTarget "collaborativeCBT" */;
 			buildPhases = (
+				E51720F591F6B4BEE083C131 /* [CP] Check Pods Manifest.lock */,
 				CC2C4C1F275BD49F006CE4DC /* Sources */,
 				CC2C4C20275BD49F006CE4DC /* Frameworks */,
 				CC2C4C21275BD49F006CE4DC /* Resources */,
+				58E2E4A4515CF9070DCF1E2F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +311,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		58E2E4A4515CF9070DCF1E2F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E51720F591F6B4BEE083C131 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-collaborativeCBT-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CC2C4C1F275BD49F006CE4DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -240,16 +361,23 @@
 				CC2C4C58275C0BD0006CE4DC /* PostViewModel.swift in Sources */,
 				CC2C4C53275BE7EE006CE4DC /* UIApplication+Extension.swift in Sources */,
 				CC2C4C55275BE88E006CE4DC /* Background.swift in Sources */,
+				CC0A204E276F089F005F06B2 /* MultilineTextField.swift in Sources */,
 				CC2C4C37275BD634006CE4DC /* Post.swift in Sources */,
+				CC0A2048276EFCB8005F06B2 /* PostService.swift in Sources */,
 				CC2C4C42275BDA7B006CE4DC /* Color+Extension.swift in Sources */,
 				CC2C4C3A275BD6D1006CE4DC /* Const.swift in Sources */,
 				CC2C4C51275BDCA2006CE4DC /* PostDetailView.swift in Sources */,
 				CC2C4C48275BDC3E006CE4DC /* _FlexibleView.swift in Sources */,
 				CC2C4C4A275BDC5F006CE4DC /* FlexibleView.swift in Sources */,
 				CC2C4C4F275BDC98006CE4DC /* PostListView.swift in Sources */,
+				CCF30333276EFB2B00F36A50 /* handleResponse.swift in Sources */,
 				CC2C4C29275BD49F006CE4DC /* ContentView.swift in Sources */,
+				CCF30332276EFB2B00F36A50 /* RequestLogginPlugin.swift in Sources */,
+				CCF30336276EFB2B00F36A50 /* PostAPI.swift in Sources */,
+				CC0A204A276EFD01005F06B2 /* BaseAPI.swift in Sources */,
 				CC2C4C46275BDC25006CE4DC /* View+Extension.swift in Sources */,
 				CC2C4C27275BD49F006CE4DC /* collaborativeCBTApp.swift in Sources */,
+				CC0A204C276EFE22005F06B2 /* PostData.swift in Sources */,
 				CC2C4C4D275BDC8E006CE4DC /* NewPostView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +503,7 @@
 		};
 		CC2C4C32275BD4A1006CE4DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 359C84E8DF3CA2248B768F46 /* Pods-collaborativeCBT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -405,6 +534,7 @@
 		};
 		CC2C4C33275BD4A1006CE4DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B43E7347C34247320B13CB3 /* Pods-collaborativeCBT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -19,6 +19,7 @@ struct PostDetailView: View {
     @EnvironmentObject var viewModel: PostsViewModel
     @ObservedObject var post: Post
     @State var comment: String = ""
+    @State var commentTrigger: [String] = []
     
     init(post: Post) {
         self.post = post
@@ -108,19 +109,28 @@ struct PostDetailView: View {
                 // Comment Input
                 VStack(alignment: .leading, spacing: 7) { // VSTACK 4
                     
-                    FlexibleView(data:Const.commentTrigger, spacing: 6, alignment: .leading) {
-                        item in
-                            Text(verbatim: item)
-                                .foregroundColor(.textGray)
-                                .font(.system(size: 14))
-                                .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
-                                .padding([.top, .bottom], LayoutConsts.chipPaddingV)
-                                .cornerRadius(10)
-                                .overlay(RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.textGray, lineWidth: 1))
-                                .onTapGesture(perform: {
-                                    comment = item
-                                })
+                    if comment.count != 0 {
+                        Text(verbatim: "본인의 비슷한 경험을 바탕으로, 관련한 질문을 덧붙여보세요!")
+                            .foregroundColor(.red)
+                            .font(.system(size: 13).bold())
+                            .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
+                            .padding([.top, .bottom], LayoutConsts.chipPaddingV)
+                    }
+                    else {
+                        FlexibleView(data:commentTrigger, spacing: 6, alignment: .leading) {
+                            item in
+                                Text(verbatim: item)
+                                    .foregroundColor(.textGray)
+                                    .font(.system(size: 14))
+                                    .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
+                                    .padding([.top, .bottom], LayoutConsts.chipPaddingV)
+                                    .cornerRadius(10)
+                                    .overlay(RoundedRectangle(cornerRadius: 10)
+                                                .stroke(Color.textGray, lineWidth: 1))
+                                    .onTapGesture(perform: {
+                                        comment = item
+                                    })
+                        }
                     }
                     
                     TextField("댓글을 입력해주세요", text: $comment) {
@@ -155,9 +165,41 @@ struct PostDetailView: View {
                     .foregroundColor(.mainPurple)
             }
         }))
+        .onAppear {
+            
+//            post.emotions.contains(where: <#T##(String) throws -> Bool#>)
+            if !post.emotions.isEmpty {
+                commentTrigger = getCommentRecommendations(emotion: post.emotions[0])
+            }
+            
+        }
     } // BODY
     
     private func endEditing() {
         UIApplication.shared.endEditing()
+    }
+    
+    func getCommentRecommendations(emotion: String) -> [String] {
+        switch emotion {
+        case "기쁨":
+            return Const.commentTrigger[emotion]!
+        default:
+            var comments: [String] = []
+            
+            guard let emotionDefault = Const.commentTrigger["기본"] else {
+                return []
+            }
+            
+            if var emotionSpecific = Const.commentTrigger[emotion] {
+                emotionSpecific.shuffle()
+                comments.append(contentsOf: Array(emotionSpecific[0..<2]))
+                comments.append(emotionDefault[0])
+                
+            } else {
+                comments.append(contentsOf: emotionDefault)
+            }
+            
+            return comments
+        }
     }
 }
