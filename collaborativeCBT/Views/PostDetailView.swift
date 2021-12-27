@@ -20,6 +20,7 @@ struct PostDetailView: View {
     @ObservedObject var post: Post
     @State var comment: String = ""
     @State var commentTrigger: [String] = []
+    @State var showCommentAdvice = false
     
     init(post: Post) {
         self.post = post
@@ -30,45 +31,48 @@ struct PostDetailView: View {
             VStack(alignment: .leading, spacing: 10) { // VSTACK 0
                 
                 // Scaffolded informations
-                VStack(alignment: .leading, spacing: 7) { // VSTACK 1
-                    
-                    // Emotion
-                    HStack { // HSTACK 0
-                        Text("감정")
-                            .foregroundColor(.subtitlePurple)
-                            .bold()
-                            .font(.system(size: 13))
-                        FlexibleView(data: post.emotions, spacing: 5, alignment: .leading, content: { item in
-                            Text(verbatim: item)
-                                .foregroundColor(.white)
-                                .font(.system(size: 12))
-                                .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
-                                .padding([.top, .bottom], LayoutConsts.chipPaddingV)
-                                .background(Color.mainPurple)
-                                .cornerRadius(10)
-                        })
-                    } // HSTACK 0
-                    
-                    // CONTEXT
-                    HStack { // HSTACK 1
-                        Text("상황")
-                            .foregroundColor(.subtitlePurple)
-                            .bold()
-                            .font(.system(size: 13))
-                        FlexibleView(data: post.contexts, spacing: 5, alignment: .leading, content: { item in
-                            Text(verbatim: item)
-                                .foregroundColor(.white)
-                                .font(.system(size: 12))
-                                .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
-                                .padding([.top, .bottom], LayoutConsts.chipPaddingV)
-                                .background(Color.mainYellow)
-                                .cornerRadius(10)
-                        })
-                         
-                    } // HSTACK 1
-                    
-                } // VSTACK 1
-                .padding([.leading, .trailing], 20)
+                if !viewModel.isControl {
+                    VStack(alignment: .leading, spacing: 7) { // VSTACK 1
+                        
+                        // Emotion
+                        HStack { // HSTACK 0
+                            Text("감정")
+                                .foregroundColor(.subtitlePurple)
+                                .bold()
+                                .font(.system(size: 13))
+                            FlexibleView(data: post.emotions, spacing: 5, alignment: .leading, content: { item in
+                                Text(verbatim: item)
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 12))
+                                    .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
+                                    .padding([.top, .bottom], LayoutConsts.chipPaddingV)
+                                    .background(Color.mainPurple)
+                                    .cornerRadius(10)
+                            })
+                        } // HSTACK 0
+                        
+                        // CONTEXT
+                        HStack { // HSTACK 1
+                            Text("상황")
+                                .foregroundColor(.subtitlePurple)
+                                .bold()
+                                .font(.system(size: 13))
+                            FlexibleView(data: post.contexts, spacing: 5, alignment: .leading, content: { item in
+                                Text(verbatim: item)
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 12))
+                                    .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
+                                    .padding([.top, .bottom], LayoutConsts.chipPaddingV)
+                                    .background(Color.mainYellow)
+                                    .cornerRadius(10)
+                            })
+                             
+                        } // HSTACK 1
+                        
+                    } // VSTACK 1
+                    .padding([.leading, .trailing], 20)
+                }
+               
                 
                 // Body texts
                 Text(post.body)
@@ -109,29 +113,57 @@ struct PostDetailView: View {
                 // Comment Input
                 VStack(alignment: .leading, spacing: 7) { // VSTACK 4
                     
-                    if comment.count != 0 {
-                        Text(verbatim: "본인의 비슷한 경험을 바탕으로, 관련한 질문을 덧붙여보세요!")
-                            .foregroundColor(.red)
-                            .font(.system(size: 13).bold())
-                            .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
-                            .padding([.top, .bottom], LayoutConsts.chipPaddingV)
-                    }
-                    else {
-                        FlexibleView(data:commentTrigger, spacing: 6, alignment: .leading) {
-                            item in
-                                Text(verbatim: item)
-                                    .foregroundColor(.textGray)
-                                    .font(.system(size: 14))
-                                    .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
-                                    .padding([.top, .bottom], LayoutConsts.chipPaddingV)
-                                    .cornerRadius(10)
-                                    .overlay(RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color.textGray, lineWidth: 1))
-                                    .onTapGesture(perform: {
-                                        comment = item
-                                    })
+                    if !viewModel.isControl {
+                        
+                        HStack(alignment: .bottom) {
+                            Image(systemName: showCommentAdvice ? "info.circle.fill" : "info.circle")
+                                .foregroundColor(.subGray)
+                                .onTapGesture {
+                                    showCommentAdvice.toggle()
+                                }
+                                .padding([.bottom], 7)
+                                .padding([.leading], 3)
+                            
+                            
+                            if showCommentAdvice {
+                                Text("여기에 무슨 말을 넣는게 좋을까요?!")
+                                    .foregroundColor(Color(uiColor: UIColor.systemGray))
+                                    .font(.system(size: 13))
+                                    .padding(7)
+                                    .background(Color.bgGray)
+                                    .cornerRadius(8)
+                            }
+                           
+                        }
+                        
+                        
+                        
+                        
+                        if comment.count != 0 {
+                            Text(verbatim: "본인의 비슷한 경험 + 관련한 질문 순으로 댓글을 이어나가 보세요!")
+                                .foregroundColor(.red)
+                                .font(.system(size: 13).bold())
+                                .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
+                                .padding([.top, .bottom], LayoutConsts.chipPaddingV)
+                        }
+                        else {
+                            FlexibleView(data:commentTrigger, spacing: 6, alignment: .leading) {
+                                item in
+                                    Text(verbatim: item)
+                                        .foregroundColor(.textGray)
+                                        .font(.system(size: 14))
+                                        .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
+                                        .padding([.top, .bottom], LayoutConsts.chipPaddingV)
+                                        .cornerRadius(10)
+                                        .overlay(RoundedRectangle(cornerRadius: 10)
+                                                    .stroke(Color.textGray, lineWidth: 1))
+                                        .onTapGesture(perform: {
+                                            comment = item
+                                        })
+                            }
                         }
                     }
+                    
                     
                     TextField("댓글을 입력해주세요", text: $comment) {
                         if let postCommented = viewModel.dummiePosts.filter({ $0.body == post.body}).first {

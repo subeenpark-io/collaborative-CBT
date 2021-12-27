@@ -11,6 +11,7 @@
 		CC0A204A276EFD01005F06B2 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A2049276EFD01005F06B2 /* BaseAPI.swift */; };
 		CC0A204C276EFE22005F06B2 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A204B276EFE22005F06B2 /* PostData.swift */; };
 		CC0A204E276F089F005F06B2 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A204D276F089F005F06B2 /* MultilineTextField.swift */; };
+		CC1EA3B5277A1BA0005D7840 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1EA3B4277A1BA0005D7840 /* CustomTabView.swift */; };
 		CC2C4C27275BD49F006CE4DC /* collaborativeCBTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2C4C26275BD49F006CE4DC /* collaborativeCBTApp.swift */; };
 		CC2C4C29275BD49F006CE4DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2C4C28275BD49F006CE4DC /* ContentView.swift */; };
 		CC2C4C2B275BD4A1006CE4DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2C4C2A275BD4A1006CE4DC /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		CC0A2049276EFD01005F06B2 /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		CC0A204B276EFE22005F06B2 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		CC0A204D276F089F005F06B2 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
+		CC1EA3B4277A1BA0005D7840 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		CC2C4C23275BD49F006CE4DC /* collaborativeCBT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = collaborativeCBT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2C4C26275BD49F006CE4DC /* collaborativeCBTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collaborativeCBTApp.swift; sourceTree = "<group>"; };
 		CC2C4C28275BD49F006CE4DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				CC2C4C4C275BDC8E006CE4DC /* NewPostView.swift */,
 				CC2C4C4E275BDC98006CE4DC /* PostListView.swift */,
 				CC2C4C50275BDCA2006CE4DC /* PostDetailView.swift */,
+				CC1EA3B4277A1BA0005D7840 /* CustomTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				CC2C4C37275BD634006CE4DC /* Post.swift in Sources */,
 				CC0A2048276EFCB8005F06B2 /* PostService.swift in Sources */,
 				CC2C4C42275BDA7B006CE4DC /* Color+Extension.swift in Sources */,
+				CC1EA3B5277A1BA0005D7840 /* CustomTabView.swift in Sources */,
 				CC2C4C3A275BD6D1006CE4DC /* Const.swift in Sources */,
 				CC2C4C51275BDCA2006CE4DC /* PostDetailView.swift in Sources */,
 				CC2C4C48275BDC3E006CE4DC /* _FlexibleView.swift in Sources */,
