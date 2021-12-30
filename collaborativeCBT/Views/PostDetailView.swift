@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct PostDetailView: View {
     
@@ -23,6 +24,10 @@ struct PostDetailView: View {
     @State var comment: String = ""
     @State var commentTrigger: [String] = []
     @State var showCommentAdvice = false
+    
+    @FocusState private var textfieldFocused: Bool
+    @State var firstFocus = true
+    
     let id: String
     
     init(post: Post) {
@@ -164,6 +169,13 @@ struct PostDetailView: View {
                                                     .stroke(Color.textGray, lineWidth: 1))
                                         .onTapGesture(perform: {
                                             comment = item
+                                            if firstFocus {
+                                                firstFocus = false
+                                                Analytics.logEvent(Const.LogEvent.experimentCommentStart.rawValue, parameters: [
+                                                    "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                                    "timestamp" : Date().loggerTime
+                                                ])
+                                            }
                                         })
                             }
                         }
@@ -174,13 +186,45 @@ struct PostDetailView: View {
                         if let postCommented = viewModel.posts.filter({ $0.id == post.id}).first {
                             viewModel.addComments(post: postCommented, comment: comment)
                         }
+                        if viewModel.isControl {
+                            Analytics.logEvent(Const.LogEvent.controlCommentEnd.rawValue, parameters: [
+                                "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                "timestamp" : Date().loggerTime
+                            ])
+                        }
+                        else {
+                            Analytics.logEvent(Const.LogEvent.experimentCommentEnd.rawValue, parameters: [
+                                "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                "timestamp" : Date().loggerTime
+                            ])
+                        }
                         comment = ""
                         self.endEditing()
                     }
-                        .font(.system(size: 12))
-                        .padding()
-                        .background(Color.bgGray)
-                        .cornerRadius(8)
+                    .focused($textfieldFocused)
+                    .font(.system(size: 12))
+                    .padding()
+                    .background(Color.bgGray)
+                    .cornerRadius(8)
+                    .onChange(of: textfieldFocused) { newValue in
+                        if firstFocus {
+                            print("start editing")
+                            firstFocus = false
+                            
+                            if viewModel.isControl {
+                                Analytics.logEvent(Const.LogEvent.controlCommentStart.rawValue, parameters: [
+                                    "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                    "timestamp" : Date().loggerTime
+                                ])
+                            }
+                            else {
+                                Analytics.logEvent(Const.LogEvent.experimentCommentStart.rawValue, parameters: [
+                                    "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                    "timestamp" : Date().loggerTime
+                                ])
+                            }
+                        }
+                    }
                 } // VSTACK 4
                 .padding([.leading, .trailing], 10)
                 

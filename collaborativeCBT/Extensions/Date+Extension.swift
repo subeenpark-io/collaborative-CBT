@@ -17,4 +17,14 @@ extension Date {
 
         return time_string
     }
+    
+    var loggerTime: String {
+        
+        var formatter_time = DateFormatter()
+        formatter_time.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        var time_string = formatter_time.string(from: self)
+
+        return time_string
+        
+    }
 }

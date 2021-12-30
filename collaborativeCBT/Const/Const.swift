@@ -10,7 +10,16 @@ import SwiftUI
 struct Const {
     
     enum LogEvent: String {
-        case 
+        case controlPostingStart
+        case controlPostingEnd
+        case controlCommentStart
+        case controlCommentEnd
+        case experimentPostingStart
+        case experimentPostingEnd
+        case experimentPostScaffoldingStart
+        case experimentPostScaffoldingEnd
+        case experimentCommentStart
+        case experimentCommentEnd
     }
 
  

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import FirebaseAnalytics
 
 struct NewPostView: View {
     
@@ -14,6 +15,7 @@ struct NewPostView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var textObserver = TextFieldObserver()
     @FocusState private var textfieldFocused: Bool
+    @State var firstFocus = true
     
     @State var bodyText: String = "저녁 약속 때문에 친구랑 살짝 다퉜는데 나중에 생각해보니 내가 하지 말아야 할 말을 해서 친구 기분이 상한 것 같아서 슬퍼졌음."
     var placeholder = "저녁 약속 때문에 친구랑 살짝 다퉜는데 나중에 생각해보니 내가 하지 말아야 할 말을 해서 친구 기분이 상한 것 같아서 슬퍼졌음."
@@ -44,6 +46,25 @@ struct NewPostView: View {
                         .onTapGesture {
                             if self.textObserver.searchText == placeholder {
                                 self.textObserver.searchText = ""
+                            }
+                        }.onChange(of: textfieldFocused) { newValue in
+                            if firstFocus {
+                                print("start editing")
+                                firstFocus = false
+                                
+                                if viewModel.isControl {
+                                    Analytics.logEvent(Const.LogEvent.controlPostingStart.rawValue, parameters: [
+                                        "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                        "timestamp" : Date().loggerTime
+                                    ])
+                                }
+                                else {
+                                    Analytics.logEvent(Const.LogEvent.experimentPostingStart.rawValue, parameters: [
+                                        "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                        "timestamp" : Date().loggerTime
+                                    ])
+                                }
+                                
                             }
                         }
                         .focused($textfieldFocused)
@@ -82,6 +103,11 @@ struct NewPostView: View {
                                     viewModel.newPost(text: bodyText)
                                 }
                                 textfieldFocused = false
+                                
+                                Analytics.logEvent(Const.LogEvent.experimentPostingEnd.rawValue, parameters: [
+                                    "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                    "timestamp" : Date().loggerTime
+                                ])
                             }
                     }
                     
@@ -99,6 +125,12 @@ struct NewPostView: View {
                         Text("잠시만 기다려주세요")
                             .foregroundColor(.subGray)
                             .font(.system(size: 14))
+                    }
+                    .onDisappear {
+                        Analytics.logEvent(Const.LogEvent.experimentPostScaffoldingStart.rawValue, parameters: [
+                            "user" : UIDevice.current.identifierForVendor!.uuidString,
+                            "timestamp" : Date().loggerTime
+                        ])
                     }
                 }
                 
@@ -277,6 +309,10 @@ struct NewPostView: View {
                                     textObserver.debouncedText = ""
                                     isWritingComplete = false
                                     viewModel.clearInputs()
+                                    Analytics.logEvent(Const.LogEvent.experimentPostScaffoldingEnd.rawValue, parameters: [
+                                        "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                        "timestamp" : Date().loggerTime
+                                    ])
                                 }
                             
                         }
@@ -306,6 +342,11 @@ struct NewPostView: View {
 //                            self.presentationMode.wrappedValue.dismiss()
                             textObserver.searchText = ""
                             viewModel.clearInputs()
+                            print("end editing")
+                            Analytics.logEvent(Const.LogEvent.controlPostingEnd.rawValue, parameters: [
+                                "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                "timestamp" : Date().loggerTime
+                            ])
                             
                         }
                     
@@ -334,6 +375,7 @@ struct NewPostView: View {
             viewModel.clearInputs()
             textObserver.searchText = self.placeholder
         }
+        
         
     }
     
