@@ -140,7 +140,7 @@ struct NewPostView: View {
                                                 .foregroundColor(.mainPurple)
                                                 .font(.system(size: 12))
                                                 .onTapGesture {
-                                                    if viewModel.dummiePosts.map({$0.emotions}).reduce([], +).contains(item) {
+                                                    if viewModel.posts.map({$0.emotions}).reduce([], +).contains(item) {
                                                         viewModel.emotions.append(item)
                                                     }
                                                     viewModel.selectedEmotions = viewModel.selectedEmotions.filter({$0 != item})
@@ -221,7 +221,7 @@ struct NewPostView: View {
                                                 .foregroundColor(.mainYellow)
                                                 .font(.system(size: 12))
                                                 .onTapGesture {
-                                                    if viewModel.dummiePosts.map({$0.contexts}).reduce([], +).contains(item) {
+                                                    if viewModel.posts.map({$0.contexts}).reduce([], +).contains(item) {
                                                         viewModel.contexts.append(item)
                                                     }
                                                     viewModel.selectedContexts = viewModel.selectedContexts.filter({$0 != item})
@@ -270,7 +270,8 @@ struct NewPostView: View {
                                 .background(Color.mainPurple)
                                 .cornerRadius(20)
                                 .onTapGesture {
-                                    viewModel.dummiePosts.append(Post(emotions: viewModel.selectedEmotions, contexts: viewModel.selectedContexts, body: bodyText, comments: []))
+                                    viewModel.savePost(body: bodyText)
+//                                    viewModel.dummiePosts.append(Post(emotions: viewModel.selectedEmotions, contexts: viewModel.selectedContexts, body: bodyText, comments: []))
         //                            self.presentationMode.wrappedValue.dismiss()
                                     textObserver.searchText = ""
                                     textObserver.debouncedText = ""
@@ -300,7 +301,8 @@ struct NewPostView: View {
                         .cornerRadius(20)
                         .onTapGesture {
                             textfieldFocused = false
-                            viewModel.dummiePosts.append(Post(emotions: viewModel.selectedEmotions, contexts: viewModel.selectedContexts, body: bodyText, comments: []))
+                            viewModel.savePost(body: bodyText)
+//                            viewModel.dummiePosts.append(Post(emotions: viewModel.selectedEmotions, contexts: viewModel.selectedContexts, body: bodyText, comments: []))
 //                            self.presentationMode.wrappedValue.dismiss()
                             textObserver.searchText = ""
                             viewModel.clearInputs()

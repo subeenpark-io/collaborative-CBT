@@ -17,14 +17,19 @@ struct PostDetailView: View {
     }
     
     @EnvironmentObject var viewModel: PostsViewModel
-    @ObservedObject var post: Post
+    var post: Post {
+        viewModel.posts.first(where: {$0.id == self.id})!
+    }
     @State var comment: String = ""
     @State var commentTrigger: [String] = []
     @State var showCommentAdvice = false
+    let id: String
     
     init(post: Post) {
-        self.post = post
+        id = post.id
     }
+    
+
     
     var body: some View {
         Background { // BACKGROUND
@@ -91,11 +96,11 @@ struct PostDetailView: View {
                 VStack(alignment: .leading, spacing: 1) { // VSTACK 2
                     ForEach(post.comments, id: \.self) { comment in
                         VStack(alignment: .leading, spacing: 7) { // VSTACK 3
-                            Text("17:58")
+                            Text(comment.createdAt.commentTime)
                                 .foregroundColor(.subGray)
                                 .font(.system(size: 10))
                             HStack {
-                                Text(comment)
+                                Text(comment.content)
                                     .font(.system(size: 14))
                                     .lineSpacing(3)
                                 Spacer()
@@ -166,8 +171,8 @@ struct PostDetailView: View {
                     
                     
                     TextField("댓글을 입력해주세요", text: $comment) {
-                        if let postCommented = viewModel.dummiePosts.filter({ $0.body == post.body}).first {
-                            postCommented.comments.append(comment)
+                        if let postCommented = viewModel.posts.filter({ $0.id == post.id}).first {
+                            viewModel.addComments(post: postCommented, comment: comment)
                         }
                         comment = ""
                         self.endEditing()

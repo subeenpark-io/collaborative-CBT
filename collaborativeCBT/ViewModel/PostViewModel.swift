@@ -10,10 +10,11 @@ import SwiftUI
 import Moya
 import RxSwift
 
+
 class PostsViewModel: ObservableObject {
 
     @Published var isControl: Bool = false
-    @Published var dummiePosts = Const.dummyPosts
+    @Published var posts: [Post] = []
     @Published var emotions: [String] = []
     @Published var selectedEmotions: [String] = []
     @Published var contexts: [String] = []
@@ -25,6 +26,8 @@ class PostsViewModel: ObservableObject {
     
 //    private lazy var service = MoyaProvider<PostAPI>()
     var disposeBag = DisposeBag()
+    
+    let myFirestore = FirestoreManager()
     
     init(isControl: Bool = false) {
         self.isControl = isControl
@@ -57,6 +60,39 @@ class PostsViewModel: ObservableObject {
         emotionField = ""
         contextField = ""
         self.isComplete = false
+    }
+    
+    func savePost(body: String) {
+        
+        let post = Post(emotions: selectedEmotions, contexts: selectedContexts, body: body, comments: [])
+        myFirestore.save(post, postType: isControl ? .control : .experiment) {  error in
+            print("error: \(error)")
+        }
+            
+    }
+    
+    func addComments(post: Post, comment: String) {
+        myFirestore.updateComment(post, postType: isControl ? .control : .experiment, comment: comment) { error in
+            print("error: \(error)")
+        }
+    }
+    
+    func subscribeFirestore() {
+        myFirestore.subscribe(postType: isControl ? .control : .experiment) { [weak self] result in
+            switch result {
+            case .success(let newPosts):
+//                print("POSTS RENEWE \(posts)D")
+//                print("POST IDS == ")
+                let newPostIds = newPosts.map({$0.id})
+                self!.posts = self!.posts.filter({ !newPostIds.contains($0.id) })
+                self!.posts.append(contentsOf: newPosts)
+                self!.posts = self!.posts.sorted(by: {
+                    $0 < $1
+                })
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
     

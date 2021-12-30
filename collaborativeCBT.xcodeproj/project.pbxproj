@@ -28,9 +28,18 @@
 		CC2C4C53275BE7EE006CE4DC /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2C4C52275BE7EE006CE4DC /* UIApplication+Extension.swift */; };
 		CC2C4C55275BE88E006CE4DC /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2C4C54275BE88E006CE4DC /* Background.swift */; };
 		CC2C4C58275C0BD0006CE4DC /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2C4C57275C0BD0006CE4DC /* PostViewModel.swift */; };
+		CC2DC3B2277E256A005AFC43 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2DC3B1277E256A005AFC43 /* Comment.swift */; };
+		CC2DC3B4277E28EC005AFC43 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2DC3B3277E28EC005AFC43 /* Date+Extension.swift */; };
 		CCF30332276EFB2B00F36A50 /* RequestLogginPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF30327276EFB2B00F36A50 /* RequestLogginPlugin.swift */; };
 		CCF30333276EFB2B00F36A50 /* handleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF30328276EFB2B00F36A50 /* handleResponse.swift */; };
 		CCF30336276EFB2B00F36A50 /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF3032C276EFB2B00F36A50 /* PostAPI.swift */; };
+		CCFC2EDA277DFE3300B0D788 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCFC2ED9277DFE3300B0D788 /* GoogleService-Info.plist */; };
+		CCFC2EDD277DFF9000B0D788 /* StreamUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC2EDC277DFF9000B0D788 /* StreamUseCase.swift */; };
+		CCFC2EDF277DFFB100B0D788 /* StreamError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC2EDE277DFFB100B0D788 /* StreamError.swift */; };
+		CCFC2EE1277DFFCC00B0D788 /* BaseStreamUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC2EE0277DFFCC00B0D788 /* BaseStreamUseCase.swift */; };
+		CCFC2EE3277E001900B0D788 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC2EE2277E001900B0D788 /* Encodable+Extension.swift */; };
+		CCFC2EE5277E03E300B0D788 /* FirestoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC2EE4277E03E300B0D788 /* FirestoreError.swift */; };
+		CCFC2EE7277E043400B0D788 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC2EE6277E043400B0D788 /* FirestoreManager.swift */; };
 		FBC4DCB960538B0C3644B1EE /* Pods_collaborativeCBT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13464554931601AB4106D803 /* Pods_collaborativeCBT.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,9 +69,18 @@
 		CC2C4C52275BE7EE006CE4DC /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		CC2C4C54275BE88E006CE4DC /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		CC2C4C57275C0BD0006CE4DC /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		CC2DC3B1277E256A005AFC43 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		CC2DC3B3277E28EC005AFC43 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		CCF30327276EFB2B00F36A50 /* RequestLogginPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestLogginPlugin.swift; sourceTree = "<group>"; };
 		CCF30328276EFB2B00F36A50 /* handleResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = handleResponse.swift; sourceTree = "<group>"; };
 		CCF3032C276EFB2B00F36A50 /* PostAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAPI.swift; sourceTree = "<group>"; };
+		CCFC2ED9277DFE3300B0D788 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CCFC2EDC277DFF9000B0D788 /* StreamUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamUseCase.swift; sourceTree = "<group>"; };
+		CCFC2EDE277DFFB100B0D788 /* StreamError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamError.swift; sourceTree = "<group>"; };
+		CCFC2EE0277DFFCC00B0D788 /* BaseStreamUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStreamUseCase.swift; sourceTree = "<group>"; };
+		CCFC2EE2277E001900B0D788 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		CCFC2EE4277E03E300B0D788 /* FirestoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreError.swift; sourceTree = "<group>"; };
+		CCFC2EE6277E043400B0D788 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +124,8 @@
 		CC2C4C25275BD49F006CE4DC /* collaborativeCBT */ = {
 			isa = PBXGroup;
 			children = (
+				CCFC2EDB277DFF7C00B0D788 /* FireStoreManager */,
+				CCFC2ED9277DFE3300B0D788 /* GoogleService-Info.plist */,
 				CCF30325276EFACB00F36A50 /* APIServices */,
 				CC2C4C56275C0BC5006CE4DC /* ViewModel */,
 				CC2C4C3E275BD914006CE4DC /* Resources */,
@@ -134,6 +154,7 @@
 			children = (
 				CC2C4C36275BD634006CE4DC /* Post.swift */,
 				CC0A204B276EFE22005F06B2 /* PostData.swift */,
+				CC2DC3B1277E256A005AFC43 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,6 +173,8 @@
 				CC2C4C41275BDA7B006CE4DC /* Color+Extension.swift */,
 				CC2C4C45275BDC25006CE4DC /* View+Extension.swift */,
 				CC2C4C52275BE7EE006CE4DC /* UIApplication+Extension.swift */,
+				CCFC2EE2277E001900B0D788 /* Encodable+Extension.swift */,
+				CC2DC3B3277E28EC005AFC43 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,6 +261,18 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		CCFC2EDB277DFF7C00B0D788 /* FireStoreManager */ = {
+			isa = PBXGroup;
+			children = (
+				CCFC2EDC277DFF9000B0D788 /* StreamUseCase.swift */,
+				CCFC2EDE277DFFB100B0D788 /* StreamError.swift */,
+				CCFC2EE0277DFFCC00B0D788 /* BaseStreamUseCase.swift */,
+				CCFC2EE4277E03E300B0D788 /* FirestoreError.swift */,
+				CCFC2EE6277E043400B0D788 /* FirestoreManager.swift */,
+			);
+			path = FireStoreManager;
+			sourceTree = "<group>";
+		};
 		EAE01D8C41E49201A4E3242A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +344,7 @@
 			files = (
 				CC2C4C2E275BD4A1006CE4DC /* Preview Assets.xcassets in Resources */,
 				CC2C4C2B275BD4A1006CE4DC /* Assets.xcassets in Resources */,
+				CCFC2EDA277DFE3300B0D788 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,18 +399,26 @@
 			files = (
 				CC2C4C58275C0BD0006CE4DC /* PostViewModel.swift in Sources */,
 				CC2C4C53275BE7EE006CE4DC /* UIApplication+Extension.swift in Sources */,
+				CCFC2EDD277DFF9000B0D788 /* StreamUseCase.swift in Sources */,
 				CC2C4C55275BE88E006CE4DC /* Background.swift in Sources */,
 				CC0A204E276F089F005F06B2 /* MultilineTextField.swift in Sources */,
+				CC2DC3B4277E28EC005AFC43 /* Date+Extension.swift in Sources */,
 				CC2C4C37275BD634006CE4DC /* Post.swift in Sources */,
 				CC0A2048276EFCB8005F06B2 /* PostService.swift in Sources */,
 				CC2C4C42275BDA7B006CE4DC /* Color+Extension.swift in Sources */,
+				CCFC2EE1277DFFCC00B0D788 /* BaseStreamUseCase.swift in Sources */,
 				CC1EA3B5277A1BA0005D7840 /* CustomTabView.swift in Sources */,
 				CC2C4C3A275BD6D1006CE4DC /* Const.swift in Sources */,
+				CC2DC3B2277E256A005AFC43 /* Comment.swift in Sources */,
+				CCFC2EDF277DFFB100B0D788 /* StreamError.swift in Sources */,
 				CC2C4C51275BDCA2006CE4DC /* PostDetailView.swift in Sources */,
 				CC2C4C48275BDC3E006CE4DC /* _FlexibleView.swift in Sources */,
 				CC2C4C4A275BDC5F006CE4DC /* FlexibleView.swift in Sources */,
+				CCFC2EE7277E043400B0D788 /* FirestoreManager.swift in Sources */,
 				CC2C4C4F275BDC98006CE4DC /* PostListView.swift in Sources */,
 				CCF30333276EFB2B00F36A50 /* handleResponse.swift in Sources */,
+				CCFC2EE5277E03E300B0D788 /* FirestoreError.swift in Sources */,
+				CCFC2EE3277E001900B0D788 /* Encodable+Extension.swift in Sources */,
 				CC2C4C29275BD49F006CE4DC /* ContentView.swift in Sources */,
 				CCF30332276EFB2B00F36A50 /* RequestLogginPlugin.swift in Sources */,
 				CCF30336276EFB2B00F36A50 /* PostAPI.swift in Sources */,

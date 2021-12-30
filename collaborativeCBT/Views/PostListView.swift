@@ -13,20 +13,20 @@ struct PostListView: View {
     
     var posts: [Post] {
         if emotionSelected.isEmpty && contextSelected.isEmpty {
-            return viewModel.dummiePosts
+            return viewModel.posts
         }
         else if contextSelected.isEmpty {
-            return viewModel.dummiePosts.filter({
+            return viewModel.posts.filter({
                 !Set($0.emotions).intersection(Set(emotionSelected)).isEmpty
             })
         }
         else if emotionSelected.isEmpty {
-            return viewModel.dummiePosts.filter({
+            return viewModel.posts.filter({
                 !Set($0.contexts).intersection(Set(contextSelected)).isEmpty
             })
         }
         else {
-            return viewModel.dummiePosts.filter({
+            return viewModel.posts.filter({
                 !Set($0.contexts).intersection(Set(contextSelected)).isEmpty &&
                 !Set($0.emotions).intersection(Set(emotionSelected)).isEmpty
             })
@@ -60,7 +60,7 @@ struct PostListView: View {
                             
                            
                             
-                            FlexibleView(data: viewModel.dummiePosts.map({$0.emotions}).reduce([], +), spacing: 6, alignment: .leading) { item in
+                            FlexibleView(data: viewModel.posts.map({$0.emotions}).reduce([], +), spacing: 6, alignment: .leading) { item in
                                 
                                 Text(verbatim: item)
                                     .foregroundColor(emotionSelected.contains(item) ? Color.white : Color.mainPurple)
@@ -93,7 +93,7 @@ struct PostListView: View {
                                 .bold()
                                 .font(.system(size: 13))
                             
-                            FlexibleView(data: viewModel.dummiePosts.map({$0.contexts}).reduce([], +), spacing: 6, alignment: .leading) { item in
+                            FlexibleView(data: viewModel.posts.map({$0.contexts}).reduce([], +), spacing: 6, alignment: .leading) { item in
                                 
                                 Text(verbatim: item)
                                     .foregroundColor(contextSelected.contains(item) ? Color.white : Color.mainYellow)
@@ -131,7 +131,7 @@ struct PostListView: View {
                             NavigationLink(destination: PostDetailView(post: post).environmentObject(viewModel)) { // NAVIGATION LINK 1
                                 VStack(alignment: .leading, spacing: 7) { // VSTACK 4
                                     
-                                    if !viewModel.isControl {
+//                                    if !post.contexts.isEmpty && !post.emotions.isEmpty {
                                         FlexibleView(data: post.contexts+post.emotions, spacing: 6, alignment: .leading) { item in
                                             Text(verbatim: item)
                                                 .foregroundColor(.white)
@@ -141,8 +141,8 @@ struct PostListView: View {
                                                 .background(post.emotions.contains(item) ? Color.mainPurple : Color.mainYellow)
                                                 .cornerRadius(10)
                                         } // FLEXIBLE VIEW
-                                    }
-                         
+//                                    }
+                                    
                                     Text(post.body)
                                         .font(.system(size: 14))
                                         .lineSpacing(4)
@@ -153,13 +153,17 @@ struct PostListView: View {
                                 .padding(8)
                                 .background(Color.white)
                                 .cornerRadius(6)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
                             }  // NAVIGATION LINK 1
                         } // LIST 0
                     } // SCROLL VIEW 0
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.bgGray)
                     Spacer()
                     
                     
                 } // VSTACK 3
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding([.top, .bottom], 10)
                 .padding([.leading, .trailing], 10)
                 .background(Color.bgGray)
@@ -167,6 +171,9 @@ struct PostListView: View {
             } // VSTACK 0
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarColor(UIColor(Color.bgGray))
+            .onAppear {
+                viewModel.subscribeFirestore()
+            }
             
             
         }
