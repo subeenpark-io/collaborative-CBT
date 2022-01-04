@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6E09B978C275D7E6D3219E8 /* Pods_collaborativeCBT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC64BAEA904D6B1FEDBBBCA /* Pods_collaborativeCBT.framework */; };
 		CC0A2048276EFCB8005F06B2 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A2047276EFCB8005F06B2 /* PostService.swift */; };
 		CC0A204A276EFD01005F06B2 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A2049276EFD01005F06B2 /* BaseAPI.swift */; };
 		CC0A204C276EFE22005F06B2 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A204B276EFE22005F06B2 /* PostData.swift */; };
@@ -40,13 +41,12 @@
 		CCFC2EE3277E001900B0D788 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC2EE2277E001900B0D788 /* Encodable+Extension.swift */; };
 		CCFC2EE5277E03E300B0D788 /* FirestoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC2EE4277E03E300B0D788 /* FirestoreError.swift */; };
 		CCFC2EE7277E043400B0D788 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC2EE6277E043400B0D788 /* FirestoreManager.swift */; };
-		FBC4DCB960538B0C3644B1EE /* Pods_collaborativeCBT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13464554931601AB4106D803 /* Pods_collaborativeCBT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		13464554931601AB4106D803 /* Pods_collaborativeCBT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collaborativeCBT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		359C84E8DF3CA2248B768F46 /* Pods-collaborativeCBT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collaborativeCBT.debug.xcconfig"; path = "Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT.debug.xcconfig"; sourceTree = "<group>"; };
-		4B43E7347C34247320B13CB3 /* Pods-collaborativeCBT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collaborativeCBT.release.xcconfig"; path = "Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT.release.xcconfig"; sourceTree = "<group>"; };
+		7D73267C1BDDE6FA9900451C /* Pods-collaborativeCBT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collaborativeCBT.debug.xcconfig"; path = "Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT.debug.xcconfig"; sourceTree = "<group>"; };
+		7FC64BAEA904D6B1FEDBBBCA /* Pods_collaborativeCBT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collaborativeCBT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98B2481F966F5DF73A677740 /* Pods-collaborativeCBT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collaborativeCBT.release.xcconfig"; path = "Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT.release.xcconfig"; sourceTree = "<group>"; };
 		CC0A2047276EFCB8005F06B2 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		CC0A2049276EFD01005F06B2 /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		CC0A204B276EFE22005F06B2 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
@@ -88,28 +88,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBC4DCB960538B0C3644B1EE /* Pods_collaborativeCBT.framework in Frameworks */,
+				B6E09B978C275D7E6D3219E8 /* Pods_collaborativeCBT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5FD79E34607D1EBBD7A7B346 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				13464554931601AB4106D803 /* Pods_collaborativeCBT.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		CC2C4C1A275BD49F006CE4DC = {
 			isa = PBXGroup;
 			children = (
 				CC2C4C25275BD49F006CE4DC /* collaborativeCBT */,
 				CC2C4C24275BD49F006CE4DC /* Products */,
 				EAE01D8C41E49201A4E3242A /* Pods */,
-				5FD79E34607D1EBBD7A7B346 /* Frameworks */,
+				EA5F0A0C434408212135C012 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -273,11 +265,19 @@
 			path = FireStoreManager;
 			sourceTree = "<group>";
 		};
+		EA5F0A0C434408212135C012 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FC64BAEA904D6B1FEDBBBCA /* Pods_collaborativeCBT.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EAE01D8C41E49201A4E3242A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				359C84E8DF3CA2248B768F46 /* Pods-collaborativeCBT.debug.xcconfig */,
-				4B43E7347C34247320B13CB3 /* Pods-collaborativeCBT.release.xcconfig */,
+				7D73267C1BDDE6FA9900451C /* Pods-collaborativeCBT.debug.xcconfig */,
+				98B2481F966F5DF73A677740 /* Pods-collaborativeCBT.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -289,11 +289,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC2C4C31275BD4A1006CE4DC /* Build configuration list for PBXNativeTarget "collaborativeCBT" */;
 			buildPhases = (
-				E51720F591F6B4BEE083C131 /* [CP] Check Pods Manifest.lock */,
+				4CD5FC0877C34E56C3DA5C16 /* [CP] Check Pods Manifest.lock */,
 				CC2C4C1F275BD49F006CE4DC /* Sources */,
 				CC2C4C20275BD49F006CE4DC /* Frameworks */,
 				CC2C4C21275BD49F006CE4DC /* Resources */,
-				58E2E4A4515CF9070DCF1E2F /* [CP] Embed Pods Frameworks */,
+				A6FFF7A1EF768B122455CCA8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -351,24 +351,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		58E2E4A4515CF9070DCF1E2F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E51720F591F6B4BEE083C131 /* [CP] Check Pods Manifest.lock */ = {
+		4CD5FC0877C34E56C3DA5C16 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -388,6 +371,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6FFF7A1EF768B122455CCA8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-collaborativeCBT/Pods-collaborativeCBT-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -484,7 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -539,7 +539,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -551,15 +551,16 @@
 		};
 		CC2C4C32275BD4A1006CE4DC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 359C84E8DF3CA2248B768F46 /* Pods-collaborativeCBT.debug.xcconfig */;
+			baseConfigurationReference = 7D73267C1BDDE6FA9900451C /* Pods-collaborativeCBT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"collaborativeCBT/Preview Content\"";
-				DEVELOPMENT_TEAM = ZB44VD5WX7;
+				DEVELOPMENT_TEAM = CJG8NYLG53;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -571,8 +572,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.subeen.collaborativeCBT;
+				MARKETING_VERSION = 1.02;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = isc.snu.collaborativeCBT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -582,15 +584,16 @@
 		};
 		CC2C4C33275BD4A1006CE4DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B43E7347C34247320B13CB3 /* Pods-collaborativeCBT.release.xcconfig */;
+			baseConfigurationReference = 98B2481F966F5DF73A677740 /* Pods-collaborativeCBT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"collaborativeCBT/Preview Content\"";
-				DEVELOPMENT_TEAM = ZB44VD5WX7;
+				DEVELOPMENT_TEAM = CJG8NYLG53;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -602,8 +605,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.subeen.collaborativeCBT;
+				MARKETING_VERSION = 1.02;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = isc.snu.collaborativeCBT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

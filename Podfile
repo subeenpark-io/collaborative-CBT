@@ -12,5 +12,6 @@ target 'collaborativeCBT' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'FirebaseAnalytics'
+  pod 'KeyboardAvoider', '~> 1.0'
 
 end

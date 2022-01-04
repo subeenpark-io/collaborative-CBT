@@ -11,6 +11,7 @@ import FirebaseAnalytics
 
 struct NewPostView: View {
     
+    @Binding var tabSelection: Int
     @EnvironmentObject var viewModel : PostsViewModel
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var textObserver = TextFieldObserver()
@@ -87,13 +88,39 @@ struct NewPostView: View {
                 
                 if !viewModel.isComplete {
                     
+                    if !isWritingComplete {
+                        HStack {
+                            Spacer()
+                            Text("다 적었어요")
+                                .bold()
+                                .foregroundColor(.white)
+                                .font(.system(size: 12))
+                                .padding(6)
+                                .background(bodyText.count > 10 ? Color.mainPurple : Color.subGray)
+                                .cornerRadius(16)
+                                .onTapGesture {
+                                    if bodyText.count > 10 {
+                                        viewModel.clearInputs()
+                                        isWritingComplete = true
+                                        viewModel.newPost(text: bodyText)
+                                    }
+                                    textfieldFocused = false
+                                    
+                                    Analytics.logEvent(Const.LogEvent.experimentPostingEnd.rawValue, parameters: [
+                                        "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                        "timestamp" : Date().loggerTime
+                                    ])
+                                }
+                        }
+                    }
+                    
+                } else {
                     HStack {
                         Spacer()
-                        Text("다 적었어요")
-                            .bold()
-                            .foregroundColor(.white)
-                            .font(.system(size: 12))
+                        Image(systemName:"arrow.clockwise")
+                        
                             .padding(6)
+                            .foregroundColor(.white)
                             .background(bodyText.count > 10 ? Color.mainPurple : Color.subGray)
                             .cornerRadius(16)
                             .onTapGesture {
@@ -110,7 +137,6 @@ struct NewPostView: View {
                                 ])
                             }
                     }
-                    
                 }
                 
                 
@@ -137,6 +163,23 @@ struct NewPostView: View {
                 if viewModel.isComplete {
                     // emotions
                     VStack(alignment: .leading, spacing: 7) { // VSTACK 2
+                        
+                        HStack {
+                            Image(systemName:"info.circle.fill")
+                                .foregroundColor(.subGray)
+                                .padding([.bottom], 7)
+                                .padding([.leading], 3)
+                            
+                            
+                            Text("아래 적절한 태그가 뜨지 않나요? 게시글을 더 상세하게 적어보세요!")
+                                .foregroundColor(.strongGray)
+                                .font(.system(size: 13))
+                                .padding(7)
+                                .background(Color.bgGray)
+                                .cornerRadius(8)
+                        }
+                    }
+                    VStack(alignment: .leading, spacing: 7) { // VSTACK 2
                         HStack {
                             Image("emoji")
                             Text("지금 감정이 어떤가요?")
@@ -150,13 +193,13 @@ struct NewPostView: View {
                         VStack(spacing: 7) {
                             FlexibleView(data: viewModel.emotions, spacing: 6, alignment: .leading) { item in
                                 Text(verbatim: item)
-                                    .foregroundColor(.textGray)
+                                    .foregroundColor(.strongGray)
                                     .font(.system(size: 12))
                                     .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
                                     .padding([.top, .bottom], LayoutConsts.chipPaddingV)
                                     .cornerRadius(10)
                                     .overlay(RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color.textGray, lineWidth: 1))
+                                                .stroke(Color.strongGray, lineWidth: 1))
                                     .onTapGesture {
                                         viewModel.selectedEmotions.append(item)
                                         viewModel.emotions = viewModel.emotions.filter({$0 != item})
@@ -194,12 +237,14 @@ struct NewPostView: View {
                                         .font(.system(size: 14))
                                         .foregroundColor(.textGray)
                                     TextField("위의 추천 태그를 탭하거나 직접 입력해 추가해주세요", text: $viewModel.emotionField) {
+                                        UIApplication.shared.endEditing()
                                         if !viewModel.selectedEmotions.contains(viewModel.emotionField) {
                                             viewModel.selectedEmotions.append(viewModel.emotionField)
                                         }
                                         viewModel.emotionField = ""
                                     }
                                     .font(.system(size: 12))
+                                    .submitLabel(.done)
                                     Spacer()
                                 }
                             }
@@ -231,7 +276,7 @@ struct NewPostView: View {
                         VStack(spacing: 7) {
                             FlexibleView(data: viewModel.contexts, spacing: 6, alignment: .leading) { item in
                                 Text(verbatim: item)
-                                    .foregroundColor(.textGray)
+                                    .foregroundColor(.strongGray)
                                     .font(.system(size: 12))
                                     .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
                                     .padding([.top, .bottom], LayoutConsts.chipPaddingV)
@@ -275,12 +320,14 @@ struct NewPostView: View {
                                         .font(.system(size: 14))
                                         .foregroundColor(.textGray)
                                     TextField("위의 추천 태그를 탭하거나 직접 입력해 추가해주세요", text: $viewModel.contextField) {
+                                        UIApplication.shared.endEditing()
                                         if !viewModel.selectedContexts.contains(viewModel.contextField) {
                                             viewModel.selectedContexts.append(viewModel.contextField)
                                         }
                                         viewModel.contextField = ""
                                     }
                                     .font(.system(size: 12))
+                                    .submitLabel(.done)
                                     Spacer()
                                 }
                             }
@@ -309,6 +356,7 @@ struct NewPostView: View {
                                     textObserver.debouncedText = ""
                                     isWritingComplete = false
                                     viewModel.clearInputs()
+                                    tabSelection = 4
                                     Analytics.logEvent(Const.LogEvent.experimentPostScaffoldingEnd.rawValue, parameters: [
                                         "user" : UIDevice.current.identifierForVendor!.uuidString,
                                         "timestamp" : Date().loggerTime
@@ -343,6 +391,7 @@ struct NewPostView: View {
                             textObserver.searchText = ""
                             viewModel.clearInputs()
                             print("end editing")
+                            tabSelection = 2
                             Analytics.logEvent(Const.LogEvent.controlPostingEnd.rawValue, parameters: [
                                 "user" : UIDevice.current.identifierForVendor!.uuidString,
                                 "timestamp" : Date().loggerTime
@@ -372,6 +421,7 @@ struct NewPostView: View {
             }
         }))
         .onAppear {
+            isWritingComplete = false
             viewModel.clearInputs()
             textObserver.searchText = self.placeholder
         }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PostListView: View {
     
+    @Binding var tabSelection: Int
     @EnvironmentObject var viewModel: PostsViewModel
     
     var posts: [Post] {
@@ -60,7 +61,7 @@ struct PostListView: View {
                             
                            
                             
-                            FlexibleView(data: viewModel.posts.map({$0.emotions}).reduce([], +), spacing: 6, alignment: .leading) { item in
+                            FlexibleView(data: viewModel.posts.map({$0.emotions}).reduce([], +).uniqued(), spacing: 6, alignment: .leading) { item in
                                 
                                 Text(verbatim: item)
                                     .foregroundColor(emotionSelected.contains(item) ? Color.white : Color.mainPurple)
@@ -93,7 +94,7 @@ struct PostListView: View {
                                 .bold()
                                 .font(.system(size: 13))
                             
-                            FlexibleView(data: viewModel.posts.map({$0.contexts}).reduce([], +), spacing: 6, alignment: .leading) { item in
+                            FlexibleView(data: viewModel.posts.map({$0.contexts}).reduce([], +).uniqued(), spacing: 6, alignment: .leading) { item in
                                 
                                 Text(verbatim: item)
                                     .foregroundColor(contextSelected.contains(item) ? Color.white : Color.mainYellow)
@@ -127,7 +128,9 @@ struct PostListView: View {
                 VStack { // VSTACK 3
 
                     ScrollView { // SCROLL VIEW 0
-                        ForEach(posts) { post in // LIST 0
+                        ForEach(posts.sorted(by: { a, b in
+                            a.createdAt > b.createdAt
+                        })) { post in // LIST 0
                             NavigationLink(destination: PostDetailView(post: post).environmentObject(viewModel)) { // NAVIGATION LINK 1
                                 VStack(alignment: .leading, spacing: 7) { // VSTACK 4
                                     
@@ -179,5 +182,12 @@ struct PostListView: View {
         }
         
        
+    }
+}
+
+public extension Array where Element: Hashable {
+    func uniqued() -> [Element] {
+        var seen = Set<Element>()
+        return filter{ seen.insert($0).inserted }
     }
 }

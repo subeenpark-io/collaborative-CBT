@@ -23,7 +23,7 @@ struct PostDetailView: View {
     }
     @State var comment: String = ""
     @State var commentTrigger: [String] = []
-    @State var showCommentAdvice = false
+    @State var showCommentAdvice = true
     
     @FocusState private var textfieldFocused: Bool
     @State var firstFocus = true
@@ -128,16 +128,13 @@ struct PostDetailView: View {
                         HStack(alignment: .bottom) {
                             Image(systemName: showCommentAdvice ? "info.circle.fill" : "info.circle")
                                 .foregroundColor(.subGray)
-                                .onTapGesture {
-                                    showCommentAdvice.toggle()
-                                }
                                 .padding([.bottom], 7)
                                 .padding([.leading], 3)
                             
                             
                             if showCommentAdvice {
-                                Text("여기에 무슨 말을 넣는게 좋을까요?!")
-                                    .foregroundColor(Color(uiColor: UIColor.systemGray))
+                                Text(comment.count == 0 ? "아래 선택지 중 하나를 선택해 댓글을 시작해보세요!" : "선택하셨다면, 이제 (i) 본인의 비슷한 경험과 (ii) 관련한 질문 순으로 댓글을 이어나가 보세요!")
+                                    .foregroundColor(.strongGray)
                                     .font(.system(size: 13))
                                     .padding(7)
                                     .background(Color.bgGray)
@@ -146,29 +143,20 @@ struct PostDetailView: View {
                            
                         }
                         
-                        
-                        
-                        
-                        if comment.count != 0 {
-                            Text(verbatim: "본인의 비슷한 경험 + 관련한 질문 순으로 댓글을 이어나가 보세요!")
-                                .foregroundColor(.red)
-                                .font(.system(size: 13).bold())
-                                .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
-                                .padding([.top, .bottom], LayoutConsts.chipPaddingV)
-                        }
-                        else {
+                        if comment.count == 0 {
                             FlexibleView(data:commentTrigger, spacing: 6, alignment: .leading) {
                                 item in
                                     Text(verbatim: item)
-                                        .foregroundColor(.textGray)
+                                        .foregroundColor(.strongGray)
                                         .font(.system(size: 14))
                                         .padding([.leading, .trailing], LayoutConsts.chipPaddingH)
                                         .padding([.top, .bottom], LayoutConsts.chipPaddingV)
                                         .cornerRadius(10)
                                         .overlay(RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.textGray, lineWidth: 1))
+                                                    .stroke(Color.strongGray, lineWidth: 1))
                                         .onTapGesture(perform: {
-                                            comment = item
+                                            comment = item + " "
+                                            textfieldFocused = true
                                             if firstFocus {
                                                 firstFocus = false
                                                 Analytics.logEvent(Const.LogEvent.experimentCommentStart.rawValue, parameters: [
