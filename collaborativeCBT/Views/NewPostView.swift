@@ -31,7 +31,11 @@ struct NewPostView: View {
     
     
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 20) { // VSTACK 0
+            
+            Spacer()
+                .frame(height: 24)
             
             // raw text
             VStack(alignment: .leading, spacing: 7) { // VSTACK 1
@@ -48,7 +52,7 @@ struct NewPostView: View {
                             if self.textObserver.searchText == placeholder {
                                 self.textObserver.searchText = ""
                             }
-                        }.onChange(of: textfieldFocused) { newValue in
+                        }.onChange(of: textfieldFocused) { focused in
                             if firstFocus {
                                 print("start editing")
                                 firstFocus = false
@@ -65,7 +69,10 @@ struct NewPostView: View {
                                         "timestamp" : Date().loggerTime
                                     ])
                                 }
-                                
+                            }
+                            
+                            if !focused && self.textObserver.searchText.isEmpty  {
+                                textObserver.searchText = placeholder
                             }
                         }
                         .focused($textfieldFocused)
@@ -96,10 +103,10 @@ struct NewPostView: View {
                                 .foregroundColor(.white)
                                 .font(.system(size: 12))
                                 .padding(6)
-                                .background(bodyText.count > 10 ? Color.mainPurple : Color.subGray)
+                                .background(bodyText.count > 10 && bodyText != placeholder ? Color.mainPurple : Color.subGray)
                                 .cornerRadius(16)
                                 .onTapGesture {
-                                    if bodyText.count > 10 {
+                                    if bodyText.count > 10 && bodyText != placeholder {
                                         viewModel.clearInputs()
                                         isWritingComplete = true
                                         viewModel.newPost(text: bodyText)
@@ -348,25 +355,27 @@ struct NewPostView: View {
                         HStack {
                             Spacer()
                             Text("기록 끝내기")
+                                .background(bodyText.count > 10 && bodyText != placeholder ? Color.mainPurple : Color.subGray)
+                                .cornerRadius(16)
+                                    
                                 .bold()
                                 .foregroundColor(.white)
                                 .font(.system(size: 12))
                                 .padding(6)
-                                .background(Color.mainPurple)
                                 .cornerRadius(20)
                                 .onTapGesture {
-                                    viewModel.savePost(body: bodyText)
-//                                    viewModel.dummiePosts.append(Post(emotions: viewModel.selectedEmotions, contexts: viewModel.selectedContexts, body: bodyText, comments: []))
-        //                            self.presentationMode.wrappedValue.dismiss()
-                                    textObserver.searchText = ""
-                                    textObserver.debouncedText = ""
-                                    isWritingComplete = false
-                                    viewModel.clearInputs()
-                                    tabSelection = 4
-                                    Analytics.logEvent(Const.LogEvent.experimentPostScaffoldingEnd.rawValue, parameters: [
-                                        "user" : UIDevice.current.identifierForVendor!.uuidString,
-                                        "timestamp" : Date().loggerTime
-                                    ])
+                                    if bodyText.count > 10 && bodyText != placeholder {
+                                        viewModel.savePost(body: bodyText)
+                                        textObserver.searchText = ""
+                                        textObserver.debouncedText = ""
+                                        isWritingComplete = false
+                                        viewModel.clearInputs()
+                                        tabSelection = 4
+                                        Analytics.logEvent(Const.LogEvent.experimentPostScaffoldingEnd.rawValue, parameters: [
+                                            "user" : UIDevice.current.identifierForVendor!.uuidString,
+                                            "timestamp" : Date().loggerTime
+                                        ])
+                                    }
                                 }
                             
                         }
@@ -412,7 +421,8 @@ struct NewPostView: View {
             
             Spacer()
         } // VSTACK 0
-        .padding([.top], 44)
+        .contentShape(Rectangle())
+//        .padding([.top], 44)
         .padding([.leading, .trailing], 15)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: {
