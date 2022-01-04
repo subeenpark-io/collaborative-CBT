@@ -42,7 +42,7 @@ struct NewPostView: View {
                     TextEditor(text: $textObserver.searchText)
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 120, maxHeight: 150)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 120)
                         .foregroundColor(textObserver.searchText == placeholder ? .textGray : .black)
                         .onTapGesture {
                             if self.textObserver.searchText == placeholder {
@@ -116,6 +116,27 @@ struct NewPostView: View {
                     
                 } else {
                     HStack {
+                        
+                        if viewModel.isComplete {
+                            VStack(alignment: .leading, spacing: 7) { // VSTACK 2
+                                
+                                HStack {
+                                    Image(systemName:"info.circle.fill")
+                                        .foregroundColor(.subGray)
+                                        .padding([.bottom], 7)
+                                        .padding([.leading], 3)
+                                    
+                                    
+                                    Text("아래 적절한 태그가 뜨지 않나요? 게시글을 더 상세하게 적어보세요!")
+                                        .foregroundColor(.strongGray)
+                                        .font(.system(size: 13))
+                                        .padding(7)
+                                        .background(Color.bgGray)
+                                        .cornerRadius(8)
+                                }
+                            }
+                        }
+                        
                         Spacer()
                         Image(systemName:"arrow.clockwise")
                         
@@ -142,6 +163,8 @@ struct NewPostView: View {
                 
                 
                 if !viewModel.isComplete && isWritingComplete {
+                    
+                    
                     VStack(spacing: 10) {
                         HStack {
                             Spacer()
@@ -162,23 +185,6 @@ struct NewPostView: View {
                 
                 if viewModel.isComplete {
                     // emotions
-                    VStack(alignment: .leading, spacing: 7) { // VSTACK 2
-                        
-                        HStack {
-                            Image(systemName:"info.circle.fill")
-                                .foregroundColor(.subGray)
-                                .padding([.bottom], 7)
-                                .padding([.leading], 3)
-                            
-                            
-                            Text("아래 적절한 태그가 뜨지 않나요? 게시글을 더 상세하게 적어보세요!")
-                                .foregroundColor(.strongGray)
-                                .font(.system(size: 13))
-                                .padding(7)
-                                .background(Color.bgGray)
-                                .cornerRadius(8)
-                        }
-                    }
                     VStack(alignment: .leading, spacing: 7) { // VSTACK 2
                         HStack {
                             Image("emoji")
